@@ -1,0 +1,64 @@
+networks:
+  my_network:
+    external: true
+
+services:
+  nginx:
+    container_name: webserver
+    depends_on:
+        - api
+    image: nginx:latest
+    ports:
+        - 80:80
+    restart: always
+    networks:
+      - my_network
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: db_postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    volumes:
+      - data_postgres:/var/lib/postgresql/data
+    networks:
+      - my_network
+  redis:
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    container_name: redis
+    restart: always
+    image: redis:6.2
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 6379:6379
+    networks:
+      - my_network
+  api:
+    container_name: restify-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm start
+    ports:
+      - 1234:8080
+    expose:
+      - 1234
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      NODE_ENV: prod
+    env_file:
+      - ./.env
+    networks:
+      - my_network
+      
+volumes:
+  data_postgres:
