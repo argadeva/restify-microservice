@@ -1,7 +1,6 @@
-const collection = 'products';
+const collection = "products";
 
 class Query {
-
   constructor(db) {
     this.db = db;
   }

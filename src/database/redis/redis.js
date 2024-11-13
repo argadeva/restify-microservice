@@ -18,7 +18,7 @@ class Redis {
     await clientRedis.select(this.index);
     const data = await clientRedis.get(key);
     return wrapper.data(data);
-  };
+  }
 
   async setData(key, value) {
     let client = await pool.getConnection();

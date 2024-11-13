@@ -1,14 +1,17 @@
-const validator = require('../../../utils/validator');
-const { sendResponse } = require('../../../utils/response');
-const queryModel = require('../repositories/queries/query_model');
-const commandHandler = require('../repositories/commands/command_handler');
-const commandModel = require('../repositories/commands/command_model');
-const queryHandler = require('../repositories/queries/query_handler');
+const validator = require("../../../utils/validator");
+const { sendResponse } = require("../../../utils/response");
+const queryModel = require("../repositories/queries/query_model");
+const commandHandler = require("../repositories/commands/command_handler");
+const commandModel = require("../repositories/commands/command_model");
+const queryHandler = require("../repositories/queries/query_handler");
 
 //query
 const getProducts = async (req, res) => {
   const payload = { ...req.params, ...req.query };
-  const validatePayload = validator.isValidPayload(payload, queryModel.listProducts);
+  const validatePayload = validator.isValidPayload(
+    payload,
+    queryModel.listProducts,
+  );
   if (validatePayload.err) {
     return sendResponse(validatePayload, res);
   }
@@ -18,7 +21,10 @@ const getProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
   const payload = { ...req.params };
-  const validatePayload = validator.isValidPayload(payload, queryModel.getProduct);
+  const validatePayload = validator.isValidPayload(
+    payload,
+    queryModel.getProduct,
+  );
   if (validatePayload.err) {
     return sendResponse(validatePayload, res);
   }
@@ -29,7 +35,10 @@ const getProductById = async (req, res) => {
 // // command
 const postProduct = async (req, res) => {
   const payload = { ...req.body };
-  const validatePayload = validator.isValidPayload(payload, commandModel.postProduct());
+  const validatePayload = validator.isValidPayload(
+    payload,
+    commandModel.postProduct(),
+  );
   if (validatePayload.err) {
     return sendResponse(validatePayload, res);
   }
@@ -39,7 +48,10 @@ const postProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const payload = { ...req.body, ...req.params };
-  const validatePayload = validator.isValidPayload(payload, commandModel.updateProduct());
+  const validatePayload = validator.isValidPayload(
+    payload,
+    commandModel.updateProduct(),
+  );
   if (validatePayload.err) {
     return sendResponse(validatePayload, res);
   }
@@ -49,7 +61,10 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   const payload = { ...req.params };
-  const validatePayload = validator.isValidPayload(payload, commandModel.deleteProduct());
+  const validatePayload = validator.isValidPayload(
+    payload,
+    commandModel.deleteProduct(),
+  );
   if (validatePayload.err) {
     return sendResponse(validatePayload, res);
   }

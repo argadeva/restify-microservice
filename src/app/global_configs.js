@@ -1,5 +1,5 @@
-require('dotenv').config();
-const confidence = require('confidence');
+require("dotenv").config();
+const confidence = require("confidence");
 
 const config = {
   cors: {
@@ -8,7 +8,9 @@ const config = {
     exposeHeaders: process.env.CORS_EXPOSE_HEADERS,
     preflightMaxAge: process.env.CORS_PREFLIGHT_MAX_AGE || 10,
   },
-  postgresqlUrl: process.env.POSTGRESQL_URL || 'postgresql://user:password@localhost:5432/dbname',
+  postgresqlUrl:
+    process.env.POSTGRESQL_URL ||
+    "postgresql://user:password@localhost:5432/dbname",
   redis: {
     url: process.env.REDIS_CLIENT_URL,
     index: process.env.REDIS_CLIENT_INDEX,

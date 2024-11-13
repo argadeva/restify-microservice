@@ -1,8 +1,8 @@
 const { Pool } = require("pg");
 const connectionPool = new Map();
 
-const config = require('../../app/global_configs');
-const pgConfig = config.get('/postgresqlUrl');
+const config = require("../../app/global_configs");
+const pgConfig = config.get("/postgresqlUrl");
 
 const init = async () => {
   console.log(pgConfig);
@@ -34,8 +34,8 @@ const init = async () => {
         "postgresql connection",
         "connection error",
         "database initiation",
-        err.stack
-      )
+        err.stack,
+      ),
     );
 };
 

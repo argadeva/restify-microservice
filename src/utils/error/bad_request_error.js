@@ -1,9 +1,8 @@
-
-const CommonError = require('./common_error');
+const CommonError = require("./common_error");
 
 class BadRequestError extends CommonError {
   constructor(message) {
-    super(message || 'Bad Request');
+    super(message || "Bad Request");
   }
 }
 

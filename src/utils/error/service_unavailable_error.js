@@ -1,9 +1,8 @@
-
-const CommonError = require('./common_error');
+const CommonError = require("./common_error");
 
 class ServiceUnavailableError extends CommonError {
   constructor(message) {
-    super(message || 'Service Unavailable');
+    super(message || "Service Unavailable");
   }
 }
 

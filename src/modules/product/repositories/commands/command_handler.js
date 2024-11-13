@@ -1,8 +1,7 @@
-
-const Domain = require('./domain');
-const config = require('../../../../app/global_configs');
-const DB = require('../../../../database/postgres/db');
-const db = new DB(config.get('/postgresqlUrl'));
+const Domain = require("./domain");
+const config = require("../../../../app/global_configs");
+const DB = require("../../../../database/postgres/db");
+const db = new DB(config.get("/postgresqlUrl"));
 const domain = new Domain(db);
 
 const postProduct = async (payload) => {

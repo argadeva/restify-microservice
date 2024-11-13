@@ -1,7 +1,6 @@
-const collection = 'products';
+const collection = "products";
 
 class Command {
-
   constructor(db) {
     this.db = db;
   }
@@ -14,7 +13,7 @@ class Command {
     return this.db.updateOne(parameter, document, collection);
   }
 
-  async deleteOne(parameter){
+  async deleteOne(parameter) {
     return this.db.deleteOne(parameter, collection);
   }
 }

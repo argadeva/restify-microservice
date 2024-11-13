@@ -1,10 +1,7 @@
-
 class CommonError extends Error {
-
-  constructor(message){
+  constructor(message) {
     super(message);
   }
-
 }
 
 module.exports = CommonError;

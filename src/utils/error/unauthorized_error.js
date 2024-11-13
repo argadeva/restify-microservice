@@ -1,9 +1,8 @@
-
-const CommonError = require('./common_error');
+const CommonError = require("./common_error");
 
 class Unauthorized extends CommonError {
   constructor(message) {
-    super(message || 'Unauthorized');
+    super(message || "Unauthorized");
   }
 }
 

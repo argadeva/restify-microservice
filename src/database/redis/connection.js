@@ -7,7 +7,7 @@ const ctx = "Connection redis";
 
 const init = async () => {
   const currConnection = connectionPool.findIndex(
-    (conf) => conf.config.toString() === redis.toString()
+    (conf) => conf.config.toString() === redis.toString(),
   );
   if (currConnection === -1) {
     const client = redis.createClient({

@@ -4,12 +4,40 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node --no-deprecation index.js"
+    "start": "node --no-deprecation index.js",
+    "test": "mocha \"test/**/*_test.js\" --timeout=5000 --exit",
+    "cover": "nyc _mocha \"test/**/*_test.js\" --recursive --exit",
+    "slint": "sonarlint --src 'bin/**' --tests 'test/**'",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
+  "nyc": {
+    "lines": 40,
+    "statements": 40,
+    "functions": 20,
+    "branches": 20,
+    "check-coverage": true,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "index.js",
+      "src/app/server.js"
+    ],
+    "reporter": [
+      "html",
+      "text",
+      "lcov",
+      "text-summary"
+    ],
+    "all": true,
+    "cache": true,
+    "report-dir": "./coverage"
+  },
   "dependencies": {
     "confidence": "^5.0.1",
     "dotenv": "^16.4.5",
@@ -22,6 +50,13 @@
     "validate.js": "^0.13.1"
   },
   "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "eslint": "^9.14.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "nodemon": "^3.1.7"
   }
 }

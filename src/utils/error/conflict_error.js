@@ -1,9 +1,8 @@
-
-const CommonError = require('./common_error');
+const CommonError = require("./common_error");
 
 class ConflictError extends CommonError {
   constructor(message) {
-    super(message || 'Conflict');
+    super(message || "Conflict");
   }
 }
 

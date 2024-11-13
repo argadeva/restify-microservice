@@ -1,9 +1,8 @@
-
-const CommonError = require('./common_error');
+const CommonError = require("./common_error");
 
 class GatewayTimeoutError extends CommonError {
   constructor(message) {
-    super(message || 'Gateway Timeout');
+    super(message || "Gateway Timeout");
   }
 }
 
